@@ -5,24 +5,37 @@
  */
 
 plugins {
-   
+    `java-library`
+    `maven-publish`
     java 
 application 
 }
 
 repositories {
-  
+    mavenLocal()
+    maven {
+        url = uri("https://repo.maven.apache.org/maven2/")
     mavenCentral()
     }
-
+}
 
 dependencies {
-   
+    api(libs.org.springframework.boot.spring.boot.starter.web)
+    testImplementation(libs.junit.junit)
 implementation("org.springframework.boot:spring-boot-starter-web:2.7.0") 
 testImplementation("junit:junit:4.13.2")
 }
 
+group = "com.example"
+version = "1.0-SNAPSHOT"
+description = "mproject"
+java.sourceCompatibility = JavaVersion.VERSION_1_8
 
+publishing {
+    publications.create<MavenPublication>("maven") {
+        from(components["java"])
+    }
 application { 
 mainClass.set("com.example.App")
+}
 }

@@ -2,7 +2,9 @@
 # https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 
 [versions]
-junit-junit = "4.13.2"
+junit-junit = "3.8.1"
+org-springframework-boot-spring-boot-starter-web = "2.7.0"
 
 [libraries]
 junit-junit = { module = "junit:junit", version.ref = "junit-junit" }
+org-springframework-boot-spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "org-springframework-boot-spring-boot-starter-web" }
