@@ -7,12 +7,11 @@
  */
 
 plugins {
-    // Apply the groovy Plugin to add support for Groovy.
     id 'groovy'
-
-    // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
+
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -53,5 +52,19 @@ java {
 application {
     // Define the main class for the application.
     mainClass = 'org.example.App'
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': application.mainClass.get()
+        )
+    }
+}
+
+tasks.register("hello") {
+doLast {
+println("Hello, DevOps with Gradle!")
+}
 }
 
