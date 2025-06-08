@@ -24,3 +24,16 @@ Generate build.....                  yes
 BUILD SUCCESSFUL in 27s
 1 actionable task: 1 executed
 =====================================================================================
+
+
+gradle build
+gradle test
+gradle run
+gradle clean
+gradle dependencies
+gradle hello
+
+gradle compileJava
+gradle test
+gradle jar
+java -jar build/libs/myapp.jar
