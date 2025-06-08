@@ -1,0 +1,26 @@
+=====================================================================================
+mkdir LAB-3
+cd LAB-3
+=====================================================================================
+mkdir myapp
+cd myapp
+=====================================================================================
+gradle init
+=====================================================================================
+Select type of build to generate:   1.Application 
+
+Select implementation language:     3.Groovy
+
+Enter target Java version:          21
+
+Project name (default: myapp):       myapp
+
+Select application structure:        1: Single application project
+
+Select build script DSL:             2.Groovy
+
+Generate build.....                  yes
+=====================================================================================
+BUILD SUCCESSFUL in 27s
+1 actionable task: 1 executed
+=====================================================================================
