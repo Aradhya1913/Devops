@@ -7,12 +7,11 @@
  */
 
 plugins {
-    // Apply the groovy Plugin to add support for Groovy.
     id 'groovy'
-
-    // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
+
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -25,6 +24,12 @@ dependencies {
 
     // This dependency is used by the application.
     implementation libs.guava
+
+    // Spring Boot Web Starter
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.0' 
+     
+    // JUnit for testing
+    testImplementation 'junit:junit:4.13.2'
 }
 
 testing {
@@ -48,3 +53,18 @@ application {
     // Define the main class for the application.
     mainClass = 'org.example.App'
 }
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': application.mainClass.get()
+        )
+    }
+}
+
+tasks.register("hello") {
+doLast {
+println("Hello, DevOps with Gradle!")
+}
+}
+
