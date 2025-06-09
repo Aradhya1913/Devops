@@ -1,0 +1,21 @@
+==============================================================================
+create a maven project using lab2 commands
+
+mvn clean
+mvn compile
+mvn test-compile
+mvn test
+mvn package
+mvn clean install
+mvn clean package
+
+java -jar target/myapp-1.0-SNAPSHOT.jar
+java -cp target/myapp-1.0-SNAPSHOT.jar com.example.App
+
+==============================================================================
+Step 1: Go to target folder where you can find myapp-1.0-SNAPSHOT.jar file
+Navigate to your Maven project target folder and run
+
+gradle init
+gradle clean build
+gradle run

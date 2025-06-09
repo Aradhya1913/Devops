@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+    tools {
+        jdk 'jdk-21'               // Must match a configured JDK name
+        maven 'Maven-3.8.8'        // Must match the configured Maven name
+    }
+    environment {
+        MAVEN_OPTS = "-Dmaven.test.failure.ignore=true"
+    }
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git url: 'https://github.com/spring-projects/spring-petclinic.git', branch: 'main'
+            }
+        }
+        stage('Build with Maven') {
+            steps {
+                bat 'mvn clean compile'
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+        stage('Archive Test Results') {
+            steps {
+                junit 'target/surefire-reports/*.xml'
+            }
+        }
+        stage('Package App') {
+            steps {
+                bat 'mvn package'
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            }
+        }
+    }
+    post {
+        success {
+            echo "✅ Build and tests succeeded."
+        }
+        failure {
+            echo "❌ Build or tests failed."
+        }
+    }
+}
